@@ -3,43 +3,35 @@
     <h6 align="center">Formulário de cadastro</h6>
     <q-form class="form-cadastro row q-col-gutter-sm" @submit="onSubmit">
       <q-input
-        class="col-md-6 col-xl-6 col-12"
+        class="col-md-12 col-xl-12 col-12"
         outlined
-        label="Nome completo"
-        v-model="form.nomeCompleto"
+        label="Nome"
+        v-model="form.nome"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
       <q-input
-        class="col-md-6 col-xl-6 col-12"
+        class="col-md-12 col-xl-12 col-12"
         outlined
-        label="E-mail"
-        v-model="form.email"
+        label="Sobrenome"
+        v-model="form.sobreNome"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
       <div class="col-md-6 col-xs-6 col-12">
-        <q-select
-          filled
-          v-model="form.curso"
-          options-dense
-          options-dark
-          emit-value
-          map-options
-          use-input
-          use-chips
-          hide-dropdown-icon
-          input-debounce="0"
-          :options="opcoes"
-          label="selecione seu curso"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-        />
+        <q-input
+        class="col-md-6 col-xl-6 col-12"
+        outlined
+        label="Data de nascimento"
+        v-model="form.dataNascimento"
+        lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+      />
       </div>
       <div class="col-md-6 col-xs-6 col-12">
         <q-select
-          filled
-          v-model="form.formacao"
+          outlined
+          v-model="form.genero"
           options-dense
           options-dark
           emit-value
@@ -49,16 +41,15 @@
           hide-dropdown-icon
           input-debounce="0"
           :options="opcoes1"
-          label="selecione sua formação"
+          label="Informe seu gênero"
           lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
         />
       </div>
       <div class="col-md-6 col-xs-6 col-12">
         <q-select
-          filled
-          v-model="form.aspectos"
-          multiple
+          outlined
+          v-model="form.cidade"
           options-dense
           options-dark
           emit-value
@@ -68,32 +59,24 @@
           hide-dropdown-icon
           input-debounce="0"
           :options="opcoes2"
-          label="selecione seus aspectos"
+          label="Informe sua cidade"
         />
       </div>
       <div class="col-md-6 col-xs-6 col-12">
-        <q-input
-          class="col-md-6 col-xl-6 col-12"
-          outlined
-          label="Mídia"
-          v-model="form.midia"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-        />
+        <q-btn class="float-right" type="submit" color="primary">Salvar</q-btn>
       </div>
-      <div>
-        <q-btn type="submit" color="primary">Salvar</q-btn>
+      <div class="col-md-12 col-xs-12 col-12">
+        <a href="" class="float-right">Informações Profisssionais</a>
       </div>
     </q-form>
   </q-page>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useQuasar } from 'quasar'
 import { useRouter } from 'vue-router'
 import postService from 'src/services/posts'
-import { api } from 'src/boot/axios'
 
 defineOptions({
   name: 'CadastroForm',
@@ -102,15 +85,12 @@ defineOptions({
     const $q = useQuasar()
     const router = useRouter()
     const form = ref({
-      nomeCompleto: '',
-      email: '',
-      curso: '',
-      formacao: '',
-      midia: ''
+      nome: '',
+      sobreNome: '',
+      dataNascimento: '',
+      genero: '',
+      cidade: ''
     })
-
-    const cursos = ref()
-    const formacao = ref()
 
     const onSubmit = async () => {
       try {
@@ -120,34 +100,17 @@ defineOptions({
           icon: 'check',
           color: 'green'
         })
-        router.push('PerfilDetalhes')
+        router.push('EquipesForm')
       } catch (error) {
         console.error(error)
       }
     }
 
-    onMounted(() => {
-      getCursos()
-      getFormacao()
-    })
-
-    const getCursos = async () => {
-      const res = await api.get('https://661c1c06e7b95ad7fa69b6e1.mockapi.io/dados')
-      cursos.value = res.data[0].curso
-    }
-
-    const getFormacao = async () => {
-      const res = await api.get('https://661c1c06e7b95ad7fa69b6e1.mockapi.io/dados')
-      formacao.value = res.data[0].formacao
-    }
-
     return {
-      curso: '',
-      opcoes: cursos,
-      formacao: '',
-      opcoes1: formacao,
-      aspectos: [],
-      opcoes2: [],
+      genero: '',
+      opcoes1: ['Masculino', 'Feminino'],
+      cidade: '',
+      opcoes2: ['Vitória', 'Serra', 'Vila Velha', 'Cariacica', 'Viana', 'Guarapari', 'Fundão'],
       form,
       onSubmit
     }
@@ -155,7 +118,7 @@ defineOptions({
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .form-cadastro-container {
   background-color: #fefefe;
 }
@@ -163,4 +126,24 @@ defineOptions({
 .q-select {
   border: none;
 }
+.q-btn {
+  border-radius: 10px;
+  top: 15px;
+}
+
+@media  (max-width: 576px ) {
+  .q-btn {
+    border-radius: 10px;
+    top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+@media  (min-width: 576px ) {
+  .q-btn {
+    top: 15px;
+    margin-bottom: 20px;
+  }
+}
+
 </style>

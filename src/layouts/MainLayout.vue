@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Projeto Core
+          Projeto Core-O
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -26,7 +26,7 @@
         <q-item-label
           header
         >
-         Menu
+        <img src="icons/leds.svg" alt="logo"/>
         </q-item-label>
 
         <EssentialLink
@@ -63,6 +63,36 @@ const linksList = [
     caption: 'cadastro',
     icon: 'shield',
     to: { name: 'cadastroForm' }
+  },
+  {
+    title: 'Competências',
+    caption: 'competências',
+    icon: '_',
+    to: { name: 'competenciasForm' }
+  },
+  {
+    title: 'Feedbacks',
+    caption: 'feedbacks',
+    icon: '_',
+    to: { name: 'feedbacksForm' }
+  },
+  {
+    title: 'P.D.I',
+    caption: 'p.d.i',
+    icon: '_',
+    to: { name: 'pdiForm' }
+  },
+  {
+    title: 'Analytics',
+    caption: 'analytics',
+    icon: '_',
+    to: { name: 'analyticsForm' }
+  },
+  {
+    title: 'Equipes',
+    caption: 'equipes',
+    icon: '_',
+    to: { name: 'equipesForm' }
   }
 ]
 
@@ -76,5 +106,10 @@ function toggleLeftDrawer () {
 <style scoped>
 .q-drawer {
   background-color:#d8e9f5;
+ }
+ img {
+  height: 50px;
+  display: block;
+  margin: 30px auto;
  }
 </style>

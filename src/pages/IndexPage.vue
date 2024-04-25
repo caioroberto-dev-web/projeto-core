@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-   <div class="row q-gutter-sm LoginContainer">
+   <div class="row LoginContainer">
       <img src="icons/leds.svg" alt="logo">
       <div class="col-md-6 col-xs-6 col-12">
         <q-input label="Login" />
@@ -47,5 +47,12 @@ img {
 
 .q-btn {
   border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+  .q-btn {
+    border-radius: 10px;
+    width: 100%;
+  }
 }
 </style>
