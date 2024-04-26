@@ -37,10 +37,30 @@ export default function useApi (url) {
     }
   }
 
+  const postCompetencias = async (form) => {
+    try {
+      const { data } = await api.post(url, form)
+      return data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const getCompetenciasById = async () => {
+    try {
+      const { data } = await api.get(`${url}`)
+      return data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   return {
     post,
     update,
     remove,
-    getById
+    getById,
+    postCompetencias,
+    getCompetenciasById
   }
 }

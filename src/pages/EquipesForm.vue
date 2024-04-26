@@ -1,30 +1,17 @@
 <template>
   <q-page padding>
     <h4 align="center">Equipes</h4>
-    <div v-if="equipesLista != ''">
-      <hr />
-      <p v-for="equipe in equipesLista" :key="equipe.id">
-        ID: {{ equipe.id }}
-      </p>
-      <p v-for="equipe in equipesLista" :key="equipe.id">
-        Nome: {{ equipe.nome }}
-      </p>
-      <p v-for="equipe in equipesLista" :key="equipe.id">
-        Sobrenome: {{ equipe.sobreNome }}
-      </p>
-      <p v-for="equipe in equipesLista" :key="equipe.id">
-        Data de Nascimento: {{ equipe.dataNascimento }}
-      </p>
-      <p v-for="equipe in equipesLista" :key="equipe.id">
-        Gênero: {{ equipe.genero }}
-      </p>
-      <p v-for="equipe in equipesLista" :key="equipe.id">
-        Cidade: {{ equipe.cidade }}
-      </p>
-      <q-btn v-for="equipe in equipesLista" color="red" @click="handleDelete(equipe.id)" :key="equipe.id">Excluir</q-btn>
-      <q-btn v-for="equipe in equipesLista" color="blue" :to="name='competenciasPessoais/' + equipe.id" :key="equipe.id">Competências Pessoais</q-btn>
-      <q-btn v-for="equipe in equipesLista" color="blue" :to="name='competenciasProfissionais/' + equipe.id" :key="equipe.id">Competências Profissionais</q-btn>
-      <hr />
+    <div v-if="equipesLista != null">
+      <div class="equipe-lista-container" v-for="equipe in equipesLista" :key="equipe.id">
+        <p> ID: {{ equipe.id }} </p>
+        <p> Nome: {{ equipe.nome }} </p>
+        <p> Data de Nascimento: {{ equipe.dataNascimento }} </p>
+        <p> Gênero: {{ equipe.genero }} </p>
+        <p>Cidade: {{ equipe.cidade }} </p>
+        <q-btn color="red" @click="handleDelete(equipe.id)" :key="equipe.id">Excluir</q-btn>
+        <q-btn color="blue" :to="name='competenciasPessoais/' + equipe.id" :key="equipe.id">Competências Pessoais</q-btn>
+        <q-btn color="blue" :to="name='competenciasProfissionais/' + equipe.id" :key="equipe.id">Competências Profissionais</q-btn>
+      </div>
     </div>
     <div v-else>
       <p align="center">Nenhuma equipe foi carregada...</p>
@@ -86,6 +73,11 @@ defineOptions({
 </script>
 
 <style scoped>
+.equipe-lista-container {
+   margin: 20px 0;
+   border: 1px solid #23367b;
+   padding: 15px;
+}
 .q-btn {
   margin: 0 10px;
 }

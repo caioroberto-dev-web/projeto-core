@@ -18,7 +18,6 @@
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
-      <div class="col-md-6 col-xs-6 col-12">
         <q-input
         class="col-md-6 col-xl-6 col-12"
         outlined
@@ -27,9 +26,8 @@
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
-      </div>
-      <div class="col-md-6 col-xs-6 col-12">
         <q-select
+          class="col-md-6 col-xs-6 col-12"
           outlined
           v-model="form.genero"
           options-dense
@@ -45,9 +43,8 @@
           lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
         />
-      </div>
-      <div class="col-md-6 col-xs-6 col-12">
         <q-select
+          class="col-md-6 col-xs-6 col-12"
           outlined
           v-model="form.cidade"
           options-dense
@@ -60,13 +57,48 @@
           input-debounce="0"
           :options="opcoes2"
           label="Informe sua cidade"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
         />
-      </div>
+        <q-select
+        class="col-md-3 col-xs-3 col-6"
+        outlined
+        v-model="form.estado"
+        options-dense
+        options-dark
+        emit-value
+        map-options
+        use-input
+        use-chips
+        hide-dropdown-icon
+        input-debounce="0"
+        :options="opcoes3"
+        label="Informe seu estado"
+        lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+      />
+      <q-select
+      class="col-md-3 col-xs-3 col-6"
+      outlined
+      v-model="form.pais"
+      options-dense
+      options-dark
+      emit-value
+      map-options
+      use-input
+      use-chips
+      hide-dropdown-icon
+      input-debounce="0"
+      :options="opcoes4"
+      label="Informe seu país"
+      lazy-rules
+      :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+    />
       <div class="col-md-6 col-xs-6 col-12">
         <q-btn class="float-right" type="submit" color="primary">Salvar</q-btn>
       </div>
       <div class="col-md-12 col-xs-12 col-12">
-        <a href="" class="float-right">Informações Profisssionais</a>
+        <a class="float-right" href="#" >Informações Profisssionais</a>
       </div>
     </q-form>
   </q-page>
@@ -88,8 +120,10 @@ defineOptions({
       nome: '',
       sobreNome: '',
       dataNascimento: '',
-      genero: '',
-      cidade: ''
+      genero: null,
+      cidade: null,
+      estado: null,
+      pais: null
     })
 
     const onSubmit = async () => {
@@ -111,6 +145,10 @@ defineOptions({
       opcoes1: ['Masculino', 'Feminino'],
       cidade: '',
       opcoes2: ['Vitória', 'Serra', 'Vila Velha', 'Cariacica', 'Viana', 'Guarapari', 'Fundão'],
+      estado: '',
+      opcoes3: ['ES', 'RJ', 'SP', 'MG', 'RS', 'SC', 'DF'],
+      pais: '',
+      opcoes4: ['Brasil', 'Argentina', 'Portugal', 'Holanda', 'Japão', 'Taiwa', 'Marrocos'],
       form,
       onSubmit
     }
