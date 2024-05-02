@@ -3,7 +3,7 @@
     <h6 align="center">Formulário de cadastro</h6>
     <q-form class="form-cadastro row q-col-gutter-sm" @submit="onSubmit">
       <q-input
-        class="col-md-12 col-xl-12 col-12"
+        class="col-md-6 col-xl-6 col-12"
         outlined
         label="Nome"
         v-model="form.nome"
@@ -11,7 +11,7 @@
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
       <q-input
-        class="col-md-12 col-xl-12 col-12"
+        class="col-md-6 col-xl-6 col-12"
         outlined
         label="Sobrenome"
         v-model="form.sobreNome"
@@ -94,7 +94,7 @@
       lazy-rules
       :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
     />
-      <div class="col-md-6 col-xs-6 col-12">
+      <div class="col-md-12 col-xs-12 col-12">
         <q-btn class="float-right" type="submit" color="primary">Salvar</q-btn>
       </div>
       <div class="col-md-12 col-xs-12 col-12">
