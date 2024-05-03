@@ -18,49 +18,48 @@
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
-        <q-input
-        class="col-md-6 col-xl-6 col-12"
-        outlined
-        label="Data de nascimento"
+      <q-input
+        class="col-md-6 col-xs-6 col-12"
         v-model="form.dataNascimento"
+        outlined
+        type="date"
+        hint="Native date"
+      />
+      <q-select
+        class="col-md-6 col-xs-6 col-12"
+        outlined
+        v-model="form.genero"
+        options-dense
+        options-dark
+        emit-value
+        map-options
+        use-input
+        use-chips
+        hide-dropdown-icon
+        input-debounce="0"
+        :options="opcoes1"
+        label="Informe seu gênero"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
-        <q-select
-          class="col-md-6 col-xs-6 col-12"
-          outlined
-          v-model="form.genero"
-          options-dense
-          options-dark
-          emit-value
-          map-options
-          use-input
-          use-chips
-          hide-dropdown-icon
-          input-debounce="0"
-          :options="opcoes1"
-          label="Informe seu gênero"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-        />
-        <q-select
-          class="col-md-6 col-xs-6 col-12"
-          outlined
-          v-model="form.cidade"
-          options-dense
-          options-dark
-          emit-value
-          map-options
-          use-input
-          use-chips
-          hide-dropdown-icon
-          input-debounce="0"
-          :options="opcoes2"
-          label="Informe sua cidade"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-        />
-        <q-select
+      <q-select
+        class="col-md-6 col-xs-6 col-12"
+        outlined
+        v-model="form.cidade"
+        options-dense
+        options-dark
+        emit-value
+        map-options
+        use-input
+        use-chips
+        hide-dropdown-icon
+        input-debounce="0"
+        :options="opcoes2"
+        label="Informe sua cidade"
+        lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+      />
+      <q-select
         class="col-md-3 col-xs-3 col-6"
         outlined
         v-model="form.estado"
@@ -78,27 +77,27 @@
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
       />
       <q-select
-      class="col-md-3 col-xs-3 col-6"
-      outlined
-      v-model="form.pais"
-      options-dense
-      options-dark
-      emit-value
-      map-options
-      use-input
-      use-chips
-      hide-dropdown-icon
-      input-debounce="0"
-      :options="opcoes4"
-      label="Informe seu país"
-      lazy-rules
-      :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-    />
+        class="col-md-3 col-xs-3 col-6"
+        outlined
+        v-model="form.pais"
+        options-dense
+        options-dark
+        emit-value
+        map-options
+        use-input
+        use-chips
+        hide-dropdown-icon
+        input-debounce="0"
+        :options="opcoes4"
+        label="Informe seu país"
+        lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+      />
       <div class="col-md-12 col-xs-12 col-12">
         <q-btn class="float-right" type="submit" color="primary">Salvar</q-btn>
       </div>
       <div class="col-md-12 col-xs-12 col-12">
-        <a class="float-right" href="#" >Informações Profisssionais</a>
+        <a class="float-right" href="#">Informações Profisssionais</a>
       </div>
     </q-form>
   </q-page>
@@ -144,11 +143,27 @@ defineOptions({
       genero: '',
       opcoes1: ['Masculino', 'Feminino'],
       cidade: '',
-      opcoes2: ['Vitória', 'Serra', 'Vila Velha', 'Cariacica', 'Viana', 'Guarapari', 'Fundão'],
+      opcoes2: [
+        'Vitória',
+        'Serra',
+        'Vila Velha',
+        'Cariacica',
+        'Viana',
+        'Guarapari',
+        'Fundão'
+      ],
       estado: '',
       opcoes3: ['ES', 'RJ', 'SP', 'MG', 'RS', 'SC', 'DF'],
       pais: '',
-      opcoes4: ['Brasil', 'Argentina', 'Portugal', 'Holanda', 'Japão', 'Taiwa', 'Marrocos'],
+      opcoes4: [
+        'Brasil',
+        'Argentina',
+        'Portugal',
+        'Holanda',
+        'Japão',
+        'Taiwa',
+        'Marrocos'
+      ],
       form,
       onSubmit
     }
@@ -157,9 +172,6 @@ defineOptions({
 </script>
 
 <style scoped>
-.form-cadastro-container {
-  background-color: #fefefe;
-}
 .form-cadastro .q-input,
 .q-select {
   border: none;
@@ -169,7 +181,7 @@ defineOptions({
   top: 15px;
 }
 
-@media  (max-width: 576px ) {
+@media (max-width: 576px) {
   .q-btn {
     border-radius: 10px;
     top: 15px;
@@ -177,11 +189,10 @@ defineOptions({
     width: 100%;
   }
 }
-@media  (min-width: 576px ) {
+@media (min-width: 576px) {
   .q-btn {
     top: 15px;
     margin-bottom: 20px;
   }
 }
-
 </style>

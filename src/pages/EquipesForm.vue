@@ -1,6 +1,6 @@
 <template>
-  <q-page padding>
-    <div class="q-pa-md">
+  <q-page padding class="equipes-container">
+      <h6 align="center">Equipes</h6>
       <q-table title="" :rows="equipesLista" :columns="columns" row-key="name">
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-sm">
@@ -12,7 +12,7 @@
             <q-btn icon="edit"
              color="primary"
              dense size="sm"
-             ></q-btn>
+             :to="name = 'perfilDetalhes/'+ props.row.id "></q-btn>
             <q-btn
               icon="delete"
               color="negative"
@@ -42,7 +42,6 @@
           </q-td>
         </template>
       </q-table>
-    </div>
   </q-page>
 </template>
 
@@ -128,11 +127,6 @@ defineOptions({
 </script>
 
 <style scoped>
-.equipe-lista-container {
-   margin: 20px 0;
-   border: 1px solid #23367b;
-   padding: 15px;
-}
 .q-btn {
   margin: 0 10px;
 }

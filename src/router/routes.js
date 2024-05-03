@@ -10,7 +10,7 @@ const routes = [
       { path: 'AnalyticsForm', name: 'analyticsForm', component: () => import('pages/AnalyticsForm.vue') },
       { path: 'EquipesForm', name: 'equipesForm', component: () => import('pages/EquipesForm.vue') },
       { path: 'CadastroForm', name: 'cadastroForm', component: () => import('pages/CadastroForm.vue') },
-      { path: 'PerfilDetalhes/:id?', name: 'perfilDetalhes', component: () => import('pages/PerfilDetalhes.vue') },
+      { path: 'PerfilDetalhes/:id', name: 'perfilDetalhes', component: () => import('pages/PerfilDetalhes.vue') },
       { path: 'CompetenciasPessoais/:id', name: 'competenciasPessoais', component: () => import('pages/CompetenciasPessoais.vue') },
       { path: 'CompetenciasProfissionais/:id', name: 'competenciasProfissionais', component: () => import('pages/CompetenciasProfissionais.vue') }
     ]

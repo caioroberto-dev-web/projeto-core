@@ -3,3 +3,12 @@
 * {
   font-family: "Courier Prime", monospace;
 }
+
+.q-page-container {
+  background-color: #d8e9f5;
+}
+
+.q-page {
+  width: 80%;
+  margin: 0 auto;
+}

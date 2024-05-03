@@ -34,19 +34,16 @@ export default {
 .logotipo_2 {
   color: #23367b;
 }
-.q-page {
-  background-color:#d8e9f5;
-}
 
 .LoginContainer  {
   display: block;
-  height: 525px;
+  margin: 0 auto;
 }
 
 img {
   display: block;
   height: 100px;
-  margin: 115px auto 50px;
+  margin: 20px auto;
 }
 
 .col-md-6, .col-xs-6 {

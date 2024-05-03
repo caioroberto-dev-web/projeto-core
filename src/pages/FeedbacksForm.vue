@@ -1,8 +1,7 @@
 <template>
   <q-page padding>
-    <h5 align="left">Feedback</h5>
-    <p align="left">Feedbacks são privados, só aparece para quem envia e recebe</p>
-    <q-form class="row competencias-pessoais-container" @submit="onSubmit">
+    <h5 align="center">Feedback</h5>
+    <q-form class="row feedbacks-container" @submit="onSubmit">
       <div class="col-md-6 col-xs-6 col-12">
         <q-input
         outlined
