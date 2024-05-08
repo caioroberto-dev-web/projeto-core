@@ -1,31 +1,31 @@
 <template>
-  <q-page padding>
-    <h5 align="center">Feedback</h5>
+  <q-page>
+    <h6 align="center">Feedback</h6>
     <q-form class="row feedbacks-container" @submit="onSubmit">
       <div class="col-md-6 col-xs-6 col-12">
+        <span>Selecione a pessoa</span>
         <q-input
-        outlined
-        label="Selecione a pessoa"
+        label=""
         v-model="form.assunto"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
         />
-      </div>
-      <div class="col-md-6 col-xs-6 col-12">
+       </div>
+        <div class="col-md-6 col-xs-6 col-12">
+        <span>Assunto</span>
        <q-input
-        outlined
-        label="Assunto"
+        label=""
         v-model="form.assunto"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
         />
       </div>
-      <div class="col-md-6 col-xs-6 col-12 q-pa-md">
+      <div class="col-md-12 col-xs-6 col-12 q-pa-md">
+        <span>Deixe seu feedback</span>
         <q-input
-          outlined
           style="width: 100%"
           type="textarea"
-          label="Deixe seu feedback"
+          label=""
           v-model="form.mensagem"
           lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
@@ -63,18 +63,14 @@ defineOptions({
 </script>
 
 <style scoped>
-h5, p {
-  padding-left: 10px;
-}
-
 .q-input {
-  margin: 0 10px;
+  margin-left: 15px;
 }
-
-.q-btn {
-  border-radius: 10px;
+span {
+  font-size: 24px;
+  color: #504949;
+  margin-left: 15px;
 }
-
 @media (max-width: 576px) {
   .q-btn {
     width: 100%;

@@ -5,7 +5,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Nome</span>
           <q-input
-            outlined
             label=""
             v-model="form.nome"
             lazy-rules
@@ -15,7 +14,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Sobrenome</span>
           <q-input
-            outlined
             label=""
             v-model="form.sobreNome"
             lazy-rules
@@ -25,7 +23,6 @@
           <span>Data de nascimento</span>
           <q-input
             v-model="form.dataNascimento"
-            outlined
             type="date"
             hint=""
             />
@@ -33,10 +30,8 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Gênero</span>
           <q-select
-            outlined
             v-model="form.genero"
             options-dense
-            options-dark
             emit-value
             map-options
             use-input
@@ -52,10 +47,8 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Localização</span>
           <q-select
-            outlined
             v-model="form.localizacao"
             options-dense
-            options-dark
             emit-value
             map-options
             use-input
@@ -71,10 +64,8 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Instituição de ensino</span>
           <q-select
-            outlined
             v-model="form.instituicaoEnsino"
             options-dense
-            options-dark
             emit-value
             map-options
             use-input
@@ -90,10 +81,8 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Formação</span>
           <q-select
-          outlined
           v-model="form.formacao.nome"
           options-dense
-          options-dark
           emit-value
           map-options
           use-input
@@ -111,10 +100,8 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Curso</span>
           <q-select
-            outlined
             v-model="form.curso"
             options-dense
-            options-dark
             emit-value
             map-options
             use-input
@@ -130,7 +117,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Cargo</span>
           <q-input
-            outlined
             label=""
             v-model="form.cargo"
             lazy-rules
@@ -140,7 +126,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Mídia</span>
           <q-input
-            outlined
             label=""
             v-model="form.midia"
             lazy-rules
@@ -148,9 +133,8 @@
             />
             <q-btn class="float-left" color="primary">Escolher arquivo</q-btn>
         </div>
-        <div class="col-md-12 col-xs-12 col-12 q-gutter-sm q-mb-md">
+        <div class="col-md-12 col-xs-12 col-12 q-mb-md">
           <q-btn class="float-left" type="submit" color="primary">Salvar</q-btn>
-          <q-btn class="float-left" color="primary" :to='name= "/"'>Voltar</q-btn>
         </div>
     </q-form>
   </q-page>
@@ -251,9 +235,6 @@ defineOptions({
   margin: 0 auto;
 }
 
-h6 {
-  color: #0168b4;
-}
 .form-cadastro .q-input,
 .q-select {
   border: none;

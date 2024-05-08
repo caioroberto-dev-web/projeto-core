@@ -120,6 +120,8 @@ defineOptions({
 }
 table td:first-child {
   width: 80%;
+  font-size: 24px;
+  color: #504949;
 }
 
 .acoes-btn {

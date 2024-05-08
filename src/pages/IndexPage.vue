@@ -3,8 +3,14 @@
    <div class="row LoginContainer">
       <img src="icons/leds.svg" alt="leds logo">
       <p align="center" class="logotipo_1">CORE<span class="logotipo_2">-O</span></p>
-        <q-input class="col-md-6 col-xs-6 col-12" outlined label="Login" />
-        <q-input class="col-md-6 col-xs-6 col-12" outlined label="Senha" />
+        <div class="col-md-6 col-xs-6 col-12">
+          <label>Login</label>
+          <q-input  label="" />
+        </div>
+        <div class="col-md-6 col-xs-6 col-12">
+          <label>Senha</label>
+          <q-input class="col-md-6 col-xs-6 col-12" label="" />
+        </div>
       <div align="center">
           <a class="col-md-6 col-xs-6 col-12" href="#" >Esqueci minha senha</a>
       </div>
@@ -25,7 +31,7 @@ export default {
 
 <style scoped>
 .LoginContainer  {
-  width: 60%;
+  width: 80%;
   display: block;
   margin: 0 auto;
 }
@@ -40,14 +46,12 @@ img {
   margin: 15px auto;
 }
 
-.q-btn {
-  border-radius: 10px;
+label {
+  font-size: 24px;
+  color: #504949;
 }
 
 @media (max-width: 576px) {
-  .LoginContainer  {
-    width: 80%;
-  }
   .q-btn {
     border-radius: 10px;
     width: 100%;

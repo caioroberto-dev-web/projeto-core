@@ -22,6 +22,10 @@ h6 {
   color: #0168b4;
 }
 
+a {
+  text-decoration: none;
+}
+
 .q-btn {
   border-radius: 25px;
   color: #0168b4;
@@ -40,19 +44,81 @@ h6 {
   padding-top: 0px;
 }
 
+.q-input,
+.q-select, .q-textarea {
+  background-color: #ededed;
+  border-radius: 15px;
+}
+
+.q-field--standard .q-field__control:before {
+  border-bottom: none;
+}
+
 .q-field--with-bottom {
   padding-bottom: 5px;
 }
-
+.q-field__bottom--animated {
+  bottom: 25px;
+}
 
 /*  CSS LOGO */
-.logotipo_1, logotipo_2 {
+.logotipo_1, .logotipo_2 {
   font-weight: bold;
   font-size: 36px;
 }
+
 .logotipo_1 {
   color: #ed1b24;
 }
+
 .logotipo_2 {
   color: #23367b;
 }
+
+
+/*  REGRAS CSS */
+
+/*
+
+Especificações técnicas para código front-end:
+
+(1) Gride de 12 colunas
+
+(2) Cor de Fundo: #F6F6F6
+
+(3) Menu: ocupa 2 colunas
+
+(4) Cor de fundo: #D8E9F5
+
+(5) Nome da empresa: CORE-O em caixa alta, fonte Montserrat, “CORE” em #ED1B24”-O” em #23367B
+
+(6) Texto Menu: Montserrat, bold, tamanho 20, caixa alta, alinhado a direita, #0168B4 Para o usuário saber onde no Menu está, a cor de fundo do texto "Profissionais" muda para #B5D6FD
+
+(7) Lateral direita do Menu em Drop Shafow Blur em 10
+
+Formulário:
+
+(8) Após o Menu, intervalo de 1 coluna. Ocupa 3 colunas. Intervalo de 1 coluna entre os campos
+
+(9) Espaçamento de 25 pixels entre um campo e outro de cima para baixo
+
+(10) Título da sessão “cadastrar profissional”: Montserrat, bold, tamanho 20, caixa alta, alinhado a direita, #0168B4
+
+(11) Títulos dos campos: Montserrat, regular, tamanho 18, #504949.
+
+(12) Os campos fechados são em formato de lista
+
+(13) Não tem placeholder. E placeholder não repete o nome do campo. Exemplo: campo “Nome” e placeholder “Nome”. Placeholder é apenas para apresentar uma nova informação que dá suporte ao usuário entender em qual formato deve enviar a informação.
+
+(14) Formato do campo de resposta em pílula, 25 corner radius
+
+Atenção: bold é apenas para texto de Menu, título e botão
+Texto comum é em regular
+
+Campos fechados são em formatos de lista. Não é em formato de tag imput, opção usava apenas quando é possível escrever várias opções de informações diferentes em um único campo, o que não é o caso
+
+A cor do texto não é #000000 e o fundo não é #FFFFFF
+
+(15) Não há barra lateral superior em azul escrito "Projeto". 
+
+*/

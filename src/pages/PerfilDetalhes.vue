@@ -6,13 +6,12 @@
     <div v-else>
       <h6 align="center">Formulário de edição de perfil</h6>
       <q-form
-        class="row q-col-gutter-sm"
+        class="row q-col-gutter-xl"
         @submit="onSubmit"
       >
         <div class="col-md-6 col-xl-6 col-12">
           <span>Nome</span>
           <q-input
-            outlined
             label="Nome"
             v-model="perfil.nome"
             lazy-rules
@@ -22,7 +21,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Sobrenome</span>
           <q-input
-            outlined
             label="Sobrenome"
             v-model="perfil.sobreNome"
             lazy-rules
@@ -32,7 +30,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Data de Nascimento</span>
           <q-input
-            outlined
             label="Data de Nascimento"
             v-model="perfil.dataNascimento"
             lazy-rules
@@ -42,7 +39,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Gênero</span>
           <q-select
-            outlined
             v-model="perfil.genero"
             options-dense
             options-dark
@@ -61,7 +57,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Cidade</span>
           <q-select
-            outlined
             v-model="perfil.cidade"
             options-dense
             options-dark
@@ -81,7 +76,6 @@
           <span>Instituição de ensino</span>
           <q-select
             class="col-6"
-            outlined
             v-model="perfil.instituicaoEnsino"
             options-dense
             options-dark
@@ -100,7 +94,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Formação</span>
           <q-select
-            outlined
             v-model="perfil.formacao.nome"
             options-dense
             options-dark
@@ -130,7 +123,6 @@
           <span>Curso</span>
           <q-select
             class="col-6"
-            outlined
             v-model="perfil.curso"
             options-dense
             options-dark
@@ -150,7 +142,6 @@
           <span>Cargo</span>
           <q-input
             class="col-6"
-            outlined
             label="Cargo"
             v-model="perfil.cargo"
             lazy-rules
@@ -161,7 +152,6 @@
           <span>Midia</span>
           <q-input
             class="col-6"
-            outlined
             label="Mídia"
             v-model="perfil.midia"
             lazy-rules
@@ -285,25 +275,16 @@ export default {
   width: 60%;
   margin: 0 auto;
 }
-.q-input,
-.q-select {
-  margin: 0 10px;
-}
-.q-btn {
-  margin: 0 15px 15px 0;
-}
+
 span {
-  position: relative;
-  font-weight: bold;
-  left: 10px;
+  font-size: 24px;
+  color: #504949;
 }
+
 @media (max-width: 576px) {
   .q-btn {
-    display: block;
-    border-radius: 10px;
     top: 15px;
     width: 100%;
-    margin: 0 auto 20px;
     float: none;
   }
 }

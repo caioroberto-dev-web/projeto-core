@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <h4 align="center">Em Construção...</h4>
+    <h6 align="center">Em Construção...</h6>
   </q-page>
 </template>
 
