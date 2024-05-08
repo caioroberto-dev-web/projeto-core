@@ -24,18 +24,8 @@ export default {
 </script>
 
 <style scoped>
-.logotipo_1, logotipo_2 {
-  font-weight: bold;
-  font-size: 36px;
-}
-.logotipo_1 {
-  color: #ed1b24;
-}
-.logotipo_2 {
-  color: #23367b;
-}
-
 .LoginContainer  {
+  width: 60%;
   display: block;
   margin: 0 auto;
 }
@@ -55,6 +45,9 @@ img {
 }
 
 @media (max-width: 576px) {
+  .LoginContainer  {
+    width: 80%;
+  }
   .q-btn {
     border-radius: 10px;
     width: 100%;

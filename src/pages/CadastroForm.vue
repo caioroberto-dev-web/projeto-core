@@ -1,104 +1,157 @@
 <template>
   <q-page padding class="form-cadastro-container">
-    <h6 align="center">Formulário de cadastro</h6>
-    <q-form class="form-cadastro row q-col-gutter-sm" @submit="onSubmit">
-      <q-input
-        class="col-md-6 col-xl-6 col-12"
-        outlined
-        label="Nome"
-        v-model="form.nome"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-      />
-      <q-input
-        class="col-md-6 col-xl-6 col-12"
-        outlined
-        label="Sobrenome"
-        v-model="form.sobreNome"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-      />
-      <q-input
-        class="col-md-6 col-xs-6 col-12"
-        v-model="form.dataNascimento"
-        outlined
-        type="date"
-        hint="Native date"
-      />
-      <q-select
-        class="col-md-6 col-xs-6 col-12"
-        outlined
-        v-model="form.genero"
-        options-dense
-        options-dark
-        emit-value
-        map-options
-        use-input
-        use-chips
-        hide-dropdown-icon
-        input-debounce="0"
-        :options="opcoes1"
-        label="Informe seu gênero"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-      />
-      <q-select
-        class="col-md-6 col-xs-6 col-12"
-        outlined
-        v-model="form.cidade"
-        options-dense
-        options-dark
-        emit-value
-        map-options
-        use-input
-        use-chips
-        hide-dropdown-icon
-        input-debounce="0"
-        :options="opcoes2"
-        label="Informe sua cidade"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-      />
-      <q-select
-        class="col-md-3 col-xs-3 col-6"
-        outlined
-        v-model="form.estado"
-        options-dense
-        options-dark
-        emit-value
-        map-options
-        use-input
-        use-chips
-        hide-dropdown-icon
-        input-debounce="0"
-        :options="opcoes3"
-        label="Informe seu estado"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-      />
-      <q-select
-        class="col-md-3 col-xs-3 col-6"
-        outlined
-        v-model="form.pais"
-        options-dense
-        options-dark
-        emit-value
-        map-options
-        use-input
-        use-chips
-        hide-dropdown-icon
-        input-debounce="0"
-        :options="opcoes4"
-        label="Informe seu país"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
-      />
-      <div class="col-md-12 col-xs-12 col-12">
-        <q-btn class="float-right" type="submit" color="primary">Salvar</q-btn>
-      </div>
-      <div class="col-md-12 col-xs-12 col-12">
-        <a class="float-right" href="#">Informações Profisssionais</a>
-      </div>
+    <h6 align="start">Cadastrar profissional</h6>
+    <q-form class="form-cadastro row q-col-gutter-xl" @submit="onSubmit">
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Nome</span>
+          <q-input
+            outlined
+            label=""
+            v-model="form.nome"
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Sobrenome</span>
+          <q-input
+            outlined
+            label=""
+            v-model="form.sobreNome"
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"/>
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Data de nascimento</span>
+          <q-input
+            v-model="form.dataNascimento"
+            outlined
+            type="date"
+            hint=""
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Gênero</span>
+          <q-select
+            outlined
+            v-model="form.genero"
+            options-dense
+            options-dark
+            emit-value
+            map-options
+            use-input
+            use-chips
+            hide-dropdown-icon
+            input-debounce="0"
+            :options="opcoes1"
+            label=""
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Localização</span>
+          <q-select
+            outlined
+            v-model="form.localizacao"
+            options-dense
+            options-dark
+            emit-value
+            map-options
+            use-input
+            use-chips
+            hide-dropdown-icon
+            input-debounce="0"
+            :options="opcoes2"
+            label=""
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Instituição de ensino</span>
+          <q-select
+            outlined
+            v-model="form.instituicaoEnsino"
+            options-dense
+            options-dark
+            emit-value
+            map-options
+            use-input
+            use-chips
+            hide-dropdown-icon
+            input-debounce="0"
+            :options="opcoes3"
+            label=""
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Formação</span>
+          <q-select
+          outlined
+          v-model="form.formacao.nome"
+          options-dense
+          options-dark
+          emit-value
+          map-options
+          use-input
+          use-chips
+          hide-dropdown-icon
+          input-debounce="0"
+          :options="opcoes4"
+          label=""
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+          />
+          <q-radio v-model="form.formacao.status" val="Em andamento" label="Em andamento" />
+          <q-radio v-model="form.formacao.status" val="Concluido" label="Concluido" />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Curso</span>
+          <q-select
+            outlined
+            v-model="form.curso"
+            options-dense
+            options-dark
+            emit-value
+            map-options
+            use-input
+            use-chips
+            hide-dropdown-icon
+            input-debounce="0"
+            :options="opcoes5"
+            label=""
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Cargo</span>
+          <q-input
+            outlined
+            label=""
+            v-model="form.cargo"
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+        </div>
+        <div class="col-md-6 col-xl-6 col-12">
+          <span>Mídia</span>
+          <q-input
+            outlined
+            label=""
+            v-model="form.midia"
+            lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
+            />
+            <q-btn class="float-left" color="primary">Escolher arquivo</q-btn>
+        </div>
+        <div class="col-md-12 col-xs-12 col-12 q-gutter-sm q-mb-md">
+          <q-btn class="float-left" type="submit" color="primary">Salvar</q-btn>
+          <q-btn class="float-left" color="primary" :to='name= "/"'>Voltar</q-btn>
+        </div>
     </q-form>
   </q-page>
 </template>
@@ -120,9 +173,12 @@ defineOptions({
       sobreNome: '',
       dataNascimento: '',
       genero: null,
-      cidade: null,
-      estado: null,
-      pais: null
+      localizacao: null,
+      instituicaoEnsino: null,
+      formacao: { nome: null, status: 'Em andamento' },
+      curso: null,
+      cargo: '',
+      midia: ''
     })
 
     const onSubmit = async () => {
@@ -152,17 +208,35 @@ defineOptions({
         'Guarapari',
         'Fundão'
       ],
-      estado: '',
-      opcoes3: ['ES', 'RJ', 'SP', 'MG', 'RS', 'SC', 'DF'],
-      pais: '',
+      instituicaoEnsino: '',
+      opcoes3: [
+        'IFES',
+        'UFES',
+        'UCL',
+        'UVV',
+        'Estácio',
+        'Multivix'
+      ],
+      formacao: '',
       opcoes4: [
-        'Brasil',
-        'Argentina',
-        'Portugal',
-        'Holanda',
-        'Japão',
-        'Taiwa',
-        'Marrocos'
+        'Bacharelado',
+        'Tecnologo',
+        'Licenciatura',
+        'Especialização',
+        'Mestrado',
+        'Doutorado',
+        'Pós-doutorado'
+      ],
+      statusFormacao: ref('0'),
+      curso: '',
+      opcoes5: [
+        'Tecnologia da Informação',
+        'Análise e Desenvolvimento de Sistemas',
+        'Ciência de Dados',
+        'Licenciatura em Computação',
+        'Defesa Cibernética',
+        'Ciência da Computação',
+        'Sistemas de Informação'
       ],
       form,
       onSubmit
@@ -172,16 +246,32 @@ defineOptions({
 </script>
 
 <style scoped>
+.form-cadastro-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+h6 {
+  color: #0168b4;
+}
 .form-cadastro .q-input,
 .q-select {
   border: none;
 }
+
 .q-btn {
-  border-radius: 10px;
   top: 15px;
 }
 
+span {
+  font-size: 24px;
+  color: #504949;
+}
+
 @media (max-width: 576px) {
+  .form-cadastro-container {
+    width: 100%;
+  }
   .q-btn {
     border-radius: 10px;
     top: 15px;
@@ -189,10 +279,9 @@ defineOptions({
     width: 100%;
   }
 }
-@media (min-width: 576px) {
-  .q-btn {
-    top: 15px;
-    margin-bottom: 20px;
-  }
+@media (min-width: 400px) {
+ .form-cadastro-container {
+    width: 80%;
+    }
 }
 </style>

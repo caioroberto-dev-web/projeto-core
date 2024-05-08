@@ -1,14 +1,58 @@
-/* app global css */
+/* ESTILO GLOBAL */
 
 * {
-  font-family: "Courier Prime", monospace;
+  font-family: "Montserrat", sans-serif;
 }
 
 .q-page-container {
-  background-color: #d8e9f5;
+  background-color: #f6f6f6;
+  color: #504949;
+  font-size: 14px;
 }
 
 .q-page {
   width: 80%;
   margin: 0 auto;
+}
+
+h6 {
+  font-size: 28px;
+  font-weight:bold;
+  text-transform: uppercase;
+  color: #0168b4;
+}
+
+.q-btn {
+  border-radius: 25px;
+  color: #0168b4;
+}
+
+/* MENU LATERAL */
+.q-drawer {
+  background-color: #d8e9f5;
+}
+.q-item.q-router-link--active, .q-item--active {
+  background-color: #b5d6fd;
+}
+
+/*  CSS GERAL CAMPO DE FORMULÁRIO */
+.q-col-gutter-y-xl > *, .q-col-gutter-xl > * {
+  padding-top: 0px;
+}
+
+.q-field--with-bottom {
+  padding-bottom: 5px;
+}
+
+
+/*  CSS LOGO */
+.logotipo_1, logotipo_2 {
+  font-weight: bold;
+  font-size: 36px;
+}
+.logotipo_1 {
+  color: #ed1b24;
+}
+.logotipo_2 {
+  color: #23367b;
 }

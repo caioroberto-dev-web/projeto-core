@@ -22,6 +22,7 @@ export default function useApi (url) {
   const remove = async (id) => {
     try {
       const { data } = await api.delete(`${url}/${id}`)
+      console.log(data)
       return data
     } catch (error) {
       throw new Error(error)
@@ -31,6 +32,15 @@ export default function useApi (url) {
   const getById = async (id) => {
     try {
       const { data } = await api.get(`${url}/${id}`)
+      return data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const getAll = async () => {
+    try {
+      const data = await api.get(`${url}`)
       return data
     } catch (error) {
       throw new Error(error)
@@ -61,6 +71,7 @@ export default function useApi (url) {
     remove,
     getById,
     postCompetencias,
-    getCompetenciasById
+    getCompetenciasById,
+    getAll
   }
 }

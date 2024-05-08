@@ -10,10 +10,6 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
-        <q-toolbar-title>
-          Projeto Core-O
-        </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
@@ -27,6 +23,7 @@
           header
         >
         <img src="icons/leds.svg" alt="logo"/>
+        <p align="center" class="logotipo_1">CORE<span class="logotipo_2">-O</span></p>
         </q-item-label>
 
         <EssentialLink
@@ -53,45 +50,45 @@ defineOptions({
 
 const linksList = [
   {
-    title: 'Login',
-    caption: 'login',
-    icon: 'login',
+    title: 'Início',
+    caption: '',
+    icon: '',
     to: { name: 'home' }
   },
   {
-    title: 'Cadastro',
-    caption: 'cadastro',
-    icon: 'shield',
+    title: 'Profissionais',
+    caption: '',
+    icon: '',
     to: { name: 'cadastroForm' }
   },
   {
     title: 'Competências',
-    caption: 'competências',
-    icon: '_',
+    caption: '',
+    icon: '',
     to: { name: 'competenciasForm' }
   },
   {
     title: 'Feedbacks',
-    caption: 'feedbacks',
-    icon: '_',
+    caption: '',
+    icon: '',
     to: { name: 'feedbacksForm' }
   },
   {
     title: 'P.D.I',
-    caption: 'p.d.i',
-    icon: '_',
+    caption: '',
+    icon: '',
     to: { name: 'pdiForm' }
   },
   {
     title: 'Analytics',
-    caption: 'analytics',
-    icon: '_',
+    caption: '',
+    icon: '',
     to: { name: 'analyticsForm' }
   },
   {
     title: 'Equipes',
-    caption: 'equipes',
-    icon: '_',
+    caption: '',
+    icon: '',
     to: { name: 'equipesForm' }
   }
 ]
@@ -107,9 +104,22 @@ function toggleLeftDrawer () {
 .q-drawer {
   background-color:#d8e9f5;
  }
+
+ .q-btn {
+  color: #fff;
+ }
+
  img {
   height: 50px;
   display: block;
   margin: 30px auto;
  }
+
+ a {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0168b4;
+  text-align: left;
+ }
+
 </style>
