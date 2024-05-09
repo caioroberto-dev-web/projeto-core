@@ -75,7 +75,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Instituição de ensino</span>
           <q-select
-            class="col-6"
             v-model="perfil.instituicaoEnsino"
             options-dense
             options-dark
@@ -122,7 +121,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Curso</span>
           <q-select
-            class="col-6"
             v-model="perfil.curso"
             options-dense
             options-dark
@@ -141,7 +139,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Cargo</span>
           <q-input
-            class="col-6"
             label=""
             v-model="perfil.cargo"
             lazy-rules
@@ -151,7 +148,6 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Midia</span>
           <q-input
-            class="col-6"
             label=""
             v-model="perfil.midia"
             lazy-rules
@@ -282,16 +278,23 @@ span {
 }
 
 @media (max-width: 576px) {
+  .form-perfil-detalhes-container {
+    width: 100%;
+  }
   .q-btn {
     top: 15px;
     width: 100%;
     float: none;
   }
 }
-@media (min-width: 576px) {
+
+@media (min-width: 400px) {
+  .form-perfil-detalhes-container {
+     width: 80%;
+  }
   .q-btn {
     top: 15px;
     margin-bottom: 20px;
   }
-}
+ }
 </style>
