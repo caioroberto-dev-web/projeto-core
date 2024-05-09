@@ -12,7 +12,7 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Nome</span>
           <q-input
-            label="Nome"
+            label=""
             v-model="perfil.nome"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
@@ -21,7 +21,7 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Sobrenome</span>
           <q-input
-            label="Sobrenome"
+            label=""
             v-model="perfil.sobreNome"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
@@ -30,7 +30,7 @@
         <div class="col-md-6 col-xl-6 col-12">
           <span>Data de Nascimento</span>
           <q-input
-            label="Data de Nascimento"
+            label=""
             v-model="perfil.dataNascimento"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
@@ -49,15 +49,15 @@
             hide-dropdown-icon
             input-debounce="0"
             :options="opcoes1"
-            label="Informe seu gênero"
+            label=""
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
           />
         </div>
         <div class="col-md-6 col-xl-6 col-12">
-          <span>Cidade</span>
+          <span>Localização</span>
           <q-select
-            v-model="perfil.cidade"
+            v-model="perfil.localizacao"
             options-dense
             options-dark
             emit-value
@@ -67,7 +67,7 @@
             hide-dropdown-icon
             input-debounce="0"
             :options="opcoes2"
-            label="Informe sua cidade"
+            label=""
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
           />
@@ -86,7 +86,7 @@
             hide-dropdown-icon
             input-debounce="0"
             :options="opcoes3"
-            label="Instituição de ensino"
+            label=""
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
           />
@@ -104,7 +104,7 @@
             hide-dropdown-icon
             input-debounce="0"
             :options="opcoes4"
-            label="Informe sua formação"
+            label=""
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
           />
@@ -133,7 +133,7 @@
             hide-dropdown-icon
             input-debounce="0"
             :options="opcoes5"
-            label="Informe seu curso"
+            label=""
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
           />
@@ -142,7 +142,7 @@
           <span>Cargo</span>
           <q-input
             class="col-6"
-            label="Cargo"
+            label=""
             v-model="perfil.cargo"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
@@ -152,7 +152,7 @@
           <span>Midia</span>
           <q-input
             class="col-6"
-            label="Mídia"
+            label=""
             v-model="perfil.midia"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório!']"
@@ -217,8 +217,8 @@ export default {
         await update(perfil.value)
         $q.notify({
           message: 'cadastro atualizado com sucesso',
-          icon: 'check',
-          color: 'green'
+          color: 'green',
+          icon: 'edit'
         })
         router.push('/EquipesForm')
       } catch (error) {

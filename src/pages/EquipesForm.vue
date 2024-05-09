@@ -92,7 +92,7 @@ defineOptions({
           $q.notify({
             message: 'Excluido com sucesso!',
             color: 'green',
-            icon: 'check'
+            icon: 'delete'
           })
         })
       } catch (error) {
