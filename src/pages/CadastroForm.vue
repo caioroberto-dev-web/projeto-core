@@ -33,6 +33,7 @@
             v-model="form.genero"
             options-dense
             emit-value
+            options-dark
             map-options
             use-input
             use-chips
@@ -50,6 +51,7 @@
             v-model="form.localizacao"
             options-dense
             emit-value
+            options-dark
             map-options
             use-input
             use-chips
@@ -67,6 +69,7 @@
             v-model="form.instituicaoEnsino"
             options-dense
             emit-value
+            options-dark
             map-options
             use-input
             use-chips
@@ -84,6 +87,7 @@
           v-model="form.formacao.nome"
           options-dense
           emit-value
+          options-dark
           map-options
           use-input
           use-chips
@@ -103,6 +107,7 @@
             v-model="form.curso"
             options-dense
             emit-value
+            options-dark
             map-options
             use-input
             use-chips

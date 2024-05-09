@@ -57,9 +57,24 @@ a {
 .q-field--with-bottom {
   padding-bottom: 5px;
 }
+
 .q-field__bottom--animated {
   bottom: 25px;
 }
+
+.q-field__inner {
+  margin-left: 15px;
+}
+
+:root {
+  --q-dark: #d9d9d9;
+}
+
+.q-list--dark, .q-item--dark {
+  color: #333;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
 
 /*  CSS LOGO */
 .logotipo_1, .logotipo_2 {

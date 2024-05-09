@@ -2,6 +2,11 @@
   <q-page padding>
     <div v-if="equipesLista == null">
       <h6 align="center">Carregando...</h6>
+      <q-ajax-bar :hijack-filter="myFilterFn" />
+    </div>
+    <div v-else-if="equipesLista == ''">
+      <h6 align="center">Nenhum profissional encontrado!</h6>
+      <q-ajax-bar :hijack-filter="myFilterFn" />
     </div>
     <div v-else>
       <h6 align="center">Equipes</h6>
@@ -14,29 +19,36 @@
         </thead>
         <tbody>
           <tr v-for="equipe in equipesLista" :key="equipe.id">
-            <td>{{equipe.nome}} </td>
+            <td>{{ equipe.nome }}</td>
             <td class="acoes-btn">
-              <q-btn icon="visibility"
-               color="primary"
-               dense size="sm"
-               :to="name = 'perfilDetalhes/'+ equipe.id ">
-              </q-btn>
-            </td>
-            <td class="acoes-btn">
-              <q-btn icon="edit"
-               color="primary"
-               dense size="sm"
-               :to="name = 'perfilDetalhes/'+ equipe.id ">
+              <q-btn
+                icon="visibility"
+                @click="showLoading"
+                color="primary"
+                dense
+                size="sm"
+                :to="(name = 'perfilDetalhes/' + equipe.id)"
+              >
               </q-btn>
             </td>
             <td class="acoes-btn">
               <q-btn
-              icon="delete"
-              color="negative"
-              dense
-              size="sm"
-              @click="handleDelete(equipe.id)"
-               />
+                icon="edit"
+                color="primary"
+                dense
+                size="sm"
+                :to="(name = 'perfilDetalhes/' + equipe.id)"
+              >
+              </q-btn>
+            </td>
+            <td class="acoes-btn">
+              <q-btn
+                icon="delete"
+                color="negative"
+                dense
+                size="sm"
+                @click="handleDelete(equipe.id)"
+              />
             </td>
           </tr>
         </tbody>
@@ -60,10 +72,11 @@ defineOptions({
     const perfil = ref()
     const $q = useQuasar()
     const { getById, getAll, remove } = postService()
+    $q.loadingBar.start()
+    $q.loadingBar.stop()
     const getEquipes = async () => {
       const res = await getAll()
       equipesLista.value = res.data
-      console.log()
     }
     const handleDelete = async (id) => {
       try {
@@ -73,8 +86,7 @@ defineOptions({
           cancel: true,
           persistent: true
         }).onOk(async () => {
-          const res = await remove(id
-          )
+          const res = await remove(id)
           console.log(res)
           await getEquipes()
           $q.notify({
@@ -103,11 +115,21 @@ defineOptions({
         console.error(error)
       }
     }
+
+    $q.loadingBar.setDefaults({
+      color: 'red',
+      size: '50px',
+      position: 'top'
+    })
     return {
       equipesLista,
       handleDelete,
       perfil: {},
-      handlePerfilDetalhes
+      handlePerfilDetalhes,
+      myFilterFn (equipesLista) {
+        // example (only https://my-service.com/* should trigger)
+        return /^https:\/\/my-service\.com/.test(equipesLista)
+      }
     }
   }
 })
@@ -125,7 +147,7 @@ table td:first-child {
 }
 
 .acoes-btn {
- padding: 20px;
+  padding: 20px;
 }
 
 @media (max-width: 768px) {
