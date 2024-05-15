@@ -26,9 +26,14 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 .q-btn {
   border-radius: 25px;
-  color: #0168b4;
+  color: #fff;
+  background-color: #0168b4;
 }
 
 /* MENU LATERAL */

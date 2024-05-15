@@ -13,12 +13,16 @@
             <label>Senha</label>
             <q-input class="col-md-6 col-xs-6 col-12" label="" v-model="form.senha" />
           </div>
+          <div class="col-md-6 col-xs-6 col-12">
+            <label>Confirma senha</label>
+            <q-input class="col-md-6 col-xs-6 col-12" label="" v-model="form.confirmaSenha" />
+          </div>
           <div class="col-md-6 col-xs-6 col-12" align="center">
-            <q-btn color="green" type="submit">Entrar</q-btn>
+            <q-btn color="green" type="submit">Cadastrar</q-btn>
           </div>
           <div align="center" class="q-mb-lg">
-            <p class="col-md-6 col-xs-6 col-12 no-margin">Ainda não tem uma conta?</p>
-            <a href="CadastroContaForm">Faça seu cadastro aqui.</a>
+            <p class="col-md-6 col-xs-6 col-12 no-margin">Você já tem uma conta?</p>
+            <a href="/">Clique aqui para entrar.</a>
           </div>
           <div align="center">
             <p class="col-md-6 col-xs-6 col-12 no-margin">Deseja fazer uma conta empresarial?</p>
@@ -32,16 +36,17 @@
 import { ref } from 'vue'
 
 export default {
-  name: 'LoginForm',
+  name: 'CadastroContaForm',
   setup () {
     const form = ref({
       email: '',
-      senha: ''
+      senha: '',
+      confirmaSenha: ''
     })
 
     const handleLogin = async () => {
       try {
-        console.log('autenticado:' + form.value.email, form.value.senha)
+        console.log('cadastro:', form.value.email, form.value.senha, form.value.confirmaSenha)
       } catch (error) {
         console.log(error.response.data.message)
       }

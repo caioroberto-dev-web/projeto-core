@@ -56,7 +56,7 @@ const linksList = [
     to: { name: 'home' }
   },
   {
-    title: 'Profissionais',
+    title: 'Meu Perfil',
     caption: '',
     icon: '',
     to: { name: 'cadastroForm' }
@@ -68,28 +68,10 @@ const linksList = [
     to: { name: 'competenciasForm' }
   },
   {
-    title: 'Feedbacks',
-    caption: '',
-    icon: '',
-    to: { name: 'feedbacksForm' }
-  },
-  {
     title: 'P.D.I',
     caption: '',
     icon: '',
     to: { name: 'pdiForm' }
-  },
-  {
-    title: 'Analytics',
-    caption: '',
-    icon: '',
-    to: { name: 'analyticsForm' }
-  },
-  {
-    title: 'Equipes',
-    caption: '',
-    icon: '',
-    to: { name: 'equipesForm' }
   }
 ]
 
