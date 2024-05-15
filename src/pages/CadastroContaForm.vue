@@ -22,11 +22,11 @@
           </div>
           <div align="center" class="q-mb-lg">
             <p class="col-md-6 col-xs-6 col-12 no-margin">Você já tem uma conta?</p>
-            <a href="/">Clique aqui para entrar.</a>
+            <router-link to="/">Clique aqui para entrar.</router-link>
           </div>
           <div align="center">
             <p class="col-md-6 col-xs-6 col-12 no-margin">Deseja fazer uma conta empresarial?</p>
-            <a href="/">Saiba mais.</a>
+            <router-link to="/">Saiba mais.</router-link>
           </div>
         </q-form>
   </q-page>
