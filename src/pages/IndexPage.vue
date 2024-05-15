@@ -18,7 +18,7 @@
           </div>
           <div align="center" class="q-mb-lg">
             <p class="col-md-6 col-xs-6 col-12 no-margin">Ainda não tem uma conta?</p>
-            <a href="/CadastroContaForm">Faça seu cadastro aqui.</a>
+            <a href="cadastroContaForm">Faça seu cadastro aqui.</a>
           </div>
           <div align="center">
             <p class="col-md-6 col-xs-6 col-12 no-margin">Deseja fazer uma conta empresarial?</p>
