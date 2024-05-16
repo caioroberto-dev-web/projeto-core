@@ -9,15 +9,15 @@
           >Adicionar Competência</q-btn
         >
       </div>
-      <div class="container-competencias">
-        <ul class="container-competencias-lista no-padding">
-          <li class="col-md-4 col-12" @click="fullHeight = true">Desenvolvimento Front-end</li>
-          <li class="col-md-4 col-12">competência - 2</li>
-          <li class="col-md-4 col-12">competência - 3</li>
-          <li class="col-md-4 col-12">competência - 4</li>
+      <div class="container-competencias container-competencias-lista no-padding" v-if="profissional ==  '' ">
+        <p>Não possui competências registradas..</p>
+      </div>
+      <div v-else class="container-competencias container-competencias-lista no-padding">
+        <ul v-for="profissionals in profissional" :key="profissionals.id">
+          <li @click="fullHeight = true , getCompetenciaDetalhes(profissionals.id)">{{ profissionals.nome }}</li>
         </ul>
       </div>
-    </div>
+      </div>
     <div class="row">
       <div class="col-md-6 col-12">
         <p>Elementos da Competência</p>
@@ -34,22 +34,21 @@
         </ul>
       </div>
     </div>
-    <q-dialog
-      v-model="medium"
-    >
-      <q-card style="width: 700px; max-width: 80vw;">
+    <q-dialog v-model="medium">
+      <q-card style="width: 700px; max-width: 80vw">
         <q-card>
-          <q-form class="q-pa-md q-gutter-sm" @submit="onSubmit">
+          <q-form class="q-pa-md q-gutter-sm" @submit="handleSubmit">
             <p>Adicionar competências</p>
             <q-select
-              v-model="form.competencias"
+              v-model="form.nome"
               use-input
               use-chips
-              multiple
               input-debounce="0"
               @new-value="createValue"
               :options="filterOptions"
               @filter="filterFn"
+              option-label="nome"
+              option-value="nome"
             />
             <q-card-actions align="right" class="bg-white text-teal">
               <q-btn label="Salvar" type="submit" v-close-popup />
@@ -62,43 +61,39 @@
     <q-dialog v-model="fullHeight" full-height>
       <q-card class="column full-height q-pa-sm" style="width: 600px">
         <div class="row">
-          <div class="col-md-6 col-12">
-          </div>
+          <div class="col-md-6 col-12"></div>
           <div class="col-md-6 col-12 q-gutter-sm">
-            <q-btn class="float-right" color="red"  v-close-popup>Excluir</q-btn>
-            <q-btn class="float-right" color="green" @click="onSubmit()" v-close-popup>Salvar</q-btn>
+            <q-btn class="float-right" @click="handleDeleteCompetencia(form.id)" color="red" v-close-popup>Excluir</q-btn>
+            <q-btn class="float-right" @click="handleEditCompetencia(form.id)" color="green" v-close-popup
+              >Salvar</q-btn
+            >
           </div>
         </div>
-        <q-form class="row q-col-gutter-sm" @submit="onSubmit">
+        <q-form class="row q-col-gutter-sm">
           <div class="col-md-6">
             <label for="">Tipo de competência</label>
             <q-select
-            v-model="form.competencias"
-            use-input
-            use-chips
-            input-debounce="0"
-            @new-value="createValue"
-            :options="filterOptions"
-            @filter="filterFn"
+              v-model="form.nome"
+              use-input
+              use-chips
+              input-debounce="0"
+              @new-value="createValue"
+              :options="filterOptions"
+              @filter="filterFn"
+              option-label="nome"
+              option-value="nome"
             />
           </div>
           <div class="col-md-6">
             <div style="max-width: 300px">
               <label for="">Evidência</label>
-              <q-input
-                v-model="form.evidencia"
-                type="textarea"
-                disable
-              />
+              <q-input v-model="form.evidencia" type="textarea" disable />
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-descricao" style="max-width: 300px">
               <label for="">Descrição</label>
-              <q-input
-                v-model="form.descricao"
-                type="textarea"
-              />
+              <q-input v-model="form.descricao" type="textarea" />
             </div>
           </div>
           <div class="col-md-6">
@@ -112,23 +107,58 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-const stringOptions = ['Desenvolvimento Front-end', 'Desenvolvimento Back-end', 'Gerenciamento de Redes', 'Segurança da Informação', 'Análise de Dados']
-const options = ['Nivel 1 - Iniciante', 'Nivel 2 - Básico', 'Nível 3 - Intermediário', 'Nível 4 - Avançado', 'Nível 5 - Especialista']
+import { onMounted, ref } from 'vue'
+import { api } from 'boot/axios'
+const options = [
+  'Nivel 1 - Iniciante',
+  'Nivel 2 - Básico',
+  'Nível 3 - Intermediário',
+  'Nível 4 - Avançado',
+  'Nível 5 - Especialista'
+]
+const options2 = ['Desenvolvedor front-end', 'Desenvolvedor back-end']
 export default {
   name: 'PdiForm',
   setup () {
+    const profissional = ref({})
     const model = ref(null)
-    const filterOptions = ref(stringOptions)
+    const filterOptions = ref(options2)
     const form = ref({
-      competencias: 'Desenvolvimento Front-end',
-      evidencias: [],
-      descricao: 'Capacidade de criar aplicativos e páginas web utilizando linguagens como HTML, CSS e JavaScript.',
-      nivel: 'Nível 1 - Iniciante'
+      nome: null,
+      evidencia: '',
+      descricao: '',
+      nivel: ''
     })
-    const onSubmit = async () => {
-      console.log(await form.value)
-      form.value = ['']
+    const handleSubmit = async () => {
+      try {
+        await api.post('/teste', form.value)
+        getCompetencias()
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    onMounted(() => {
+      getCompetencias()
+    })
+
+    const getCompetencias = async () => {
+      const res = await api.get('/teste')
+      console.log((profissional.value = res.data))
+    }
+    const getCompetenciaDetalhes = async (id) => {
+      const res = await api.get('/teste/' + id)
+      console.log((form.value = res.data))
+    }
+    const handleEditCompetencia = async (id) => {
+      const res = await api.put('/teste/' + id, form.value)
+      console.log(res)
+      getCompetencias()
+    }
+    const handleDeleteCompetencia = async (id) => {
+      const res = await api.delete('/teste/' + id)
+      console.log(res)
+      getCompetencias()
     }
     return {
       medium: ref(false),
@@ -137,38 +167,32 @@ export default {
       model,
       filterOptions,
       options,
+      options2,
+      profissional,
       form,
-      onSubmit,
+      handleSubmit,
+      getCompetenciaDetalhes,
+      handleEditCompetencia,
+      handleDeleteCompetencia,
       createValue (val, done) {
-        // Calling done(var) when new-value-mode is not set or is "add", or done(var, "add") adds "var" content to the model
-        // and it resets the input textbox to empty string
-        // ----
-        // Calling done(var) when new-value-mode is "add-unique", or done(var, "add-unique") adds "var" content to the model
-        // only if is not already set and it resets the input textbox to empty string
-        // ----
-        // Calling done(var) when new-value-mode is "toggle", or done(var, "toggle") toggles the model with "var" content
-        // (adds to model if not already in the model, removes from model if already has it)
-        // and it resets the input textbox to empty string
-        // ----
-        // If "var" content is undefined/null, then it doesn't tampers with the model
-        // and only resets the input textbox to empty string
-
         if (val.length > 0) {
           const modelValue = (model.value || []).slice()
-
           val
             .split(/[,;|]+/)
             .map((v) => v.trim())
             .filter((v) => v.length > 0)
             .forEach((v) => {
-              if (stringOptions.includes(v) === false) {
-                stringOptions.push(v)
-              }
-              if (modelValue.includes(v) === false) {
-                modelValue.push(v)
+              const existingOption = options2.find(
+                (option) => option.nome === v
+              )
+              if (!existingOption) {
+                const newOption = { nome: v, nivel: '' }
+                options2.push(newOption)
+                modelValue.push(newOption)
+              } else if (!modelValue.includes(existingOption)) {
+                modelValue.push(existingOption)
               }
             })
-
           done(null)
           model.value = modelValue
         }
@@ -176,11 +200,11 @@ export default {
       filterFn (val, update) {
         update(() => {
           if (val === '') {
-            filterOptions.value = stringOptions
+            filterOptions.value = options2
           } else {
             const needle = val.toLowerCase()
-            filterOptions.value = stringOptions.filter(
-              (v) => v.toLowerCase().indexOf(needle) > -1
+            filterOptions.value = options2.filter(
+              (v) => v.nome.toLowerCase().indexOf(needle) > -1
             )
           }
         })
