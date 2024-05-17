@@ -13,24 +13,29 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label
-          header
-        >
-        <img src="icons/leds.svg" alt="logo"/>
-        <p align="center" class="logotipo_1">CORE<span class="logotipo_2">-O</span></p>
+        <q-item-label header>
+          <img src="icons/leds.svg" alt="logo" />
+          <p align="center" class="logotipo_1">
+            CORE<span class="logotipo_2">-O</span>
+          </p>
         </q-item-label>
 
-        <EssentialLink
+        <div v-if="userDados == null">
+          <EssentialLink
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
-        />
+          />
+        </div>
+        <div v-if="userDados != null">
+          <EssentialLink
+          v-for="link in linksList2"
+          :key="link.title"
+          v-bind="link"
+          />
+        </div>
       </q-list>
     </q-drawer>
 
@@ -43,35 +48,55 @@
 <script setup>
 import { ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import { useQuasar } from 'quasar'
 
 defineOptions({
-  name: 'MainLayout'
+  name: 'MainLayout',
+  setup () {
+    return {}
+  }
 })
+const $q = useQuasar()
+const userDados = ref()
 
 const linksList = [
   {
-    title: 'Início',
+    title: 'Login',
     caption: '',
     icon: '',
-    to: { name: 'home' }
-  },
-  {
-    title: 'Meu Perfil',
-    caption: '',
-    icon: '',
-    to: { name: 'cadastroForm' }
+    to: { name: 'loginForm' }
   },
   {
     title: 'Competências',
     caption: '',
     icon: '',
-    to: { name: 'competenciasForm' }
+    to: { name: 'competenciasForm2' }
   },
   {
-    title: 'P.D.I',
+    title: 'Buscar',
     caption: '',
     icon: '',
-    to: { name: 'pdiForm' }
+    to: { name: 'equipesForm' }
+  }
+]
+const linksList2 = [
+  {
+    title: 'Meu Perfil',
+    caption: '',
+    icon: '',
+    to: { name: 'perfilDetalhes' }
+  },
+  {
+    title: 'Competências',
+    caption: '',
+    icon: '',
+    to: { name: 'competenciasForm2' }
+  },
+  {
+    title: 'Buscar',
+    caption: '',
+    icon: '',
+    to: { name: 'equipesForm' }
   }
 ]
 
@@ -80,28 +105,30 @@ const leftDrawerOpen = ref(false)
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
+
+userDados.value = $q.localStorage.getItem('user')
+
 </script>
 
 <style scoped>
 .q-drawer {
-  background-color:#d8e9f5;
- }
+  background-color: #d8e9f5;
+}
 
- .q-btn {
+.q-btn {
   color: #fff;
- }
+}
 
- img {
+img {
   height: 50px;
   display: block;
   margin: 30px auto;
- }
+}
 
- a {
+a {
   font-size: 28px;
   font-weight: bold;
   color: #0168b4;
   text-align: left;
- }
-
+}
 </style>
